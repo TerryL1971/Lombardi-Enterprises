@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces';
+
+/*
+  Lombardi Enterprises — design tokens.
+  Warm editorial palette: ink + paper + a terracotta signature accent.
+  Light is the default; dark swaps the roles under [data-theme="dark"]
+  and prefers-color-scheme.
+*/
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+
+  --color-paper: #fbfaf7;
+  --color-paper-deep: #f2efe8;
+  --color-ink: #17181c;
+  --color-ink-soft: #33343b;
+  --color-muted: #6b6a63;
+  --color-line: #e4e0d6;
+
+  --color-accent: #c05a36;
+  --color-accent-deep: #a6472a;
+  --color-accent-soft: #f0d9cf;
+
+  --color-bg: var(--color-paper);
+  --color-surface: #ffffff;
+  --color-fg: var(--color-ink);
+  --color-fg-soft: var(--color-ink-soft);
+  --color-border: var(--color-line);
+
+  --radius-card: 1.25rem;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Dark theme — explicit choice wins in both directions */
+:root[data-theme='dark'] {
+  --color-bg: #121216;
+  --color-surface: #1b1c22;
+  --color-fg: #f3f1ea;
+  --color-fg-soft: #c9c6bd;
+  --color-muted: #928e83;
+  --color-border: #2c2d34;
+  --color-accent: #e07a54;
+  --color-accent-deep: #c05a36;
+  --color-accent-soft: #3a2a24;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #121216;
+    --color-surface: #1b1c22;
+    --color-fg: #f3f1ea;
+    --color-fg-soft: #c9c6bd;
+    --color-muted: #928e83;
+    --color-border: #2c2d34;
+    --color-accent: #e07a54;
+    --color-accent-deep: #c05a36;
+    --color-accent-soft: #3a2a24;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--color-fg);
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-wide {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-wide {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* Scroll-reveal: hidden until the Reveal island adds .is-visible.
+     If JS never runs, content still shows (progressive enhancement). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s var(--ease-out-soft),
+      transform 0.7s var(--ease-out-soft);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}

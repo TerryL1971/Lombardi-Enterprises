@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import terry from '../assets/terry.png';
+
+const facts = [
+  ['In Germany since', '2016'],
+  ['Years in business &amp; sales', '20+'],
+  ['Training', 'CareerFoundry · Turing College'],
+  ['Based near', 'Stuttgart'],
+];
+
+const tech = [
+  'Astro', 'Next.js', 'SvelteKit', 'Nuxt / Vue', 'React', 'React Native',
+  'TypeScript', 'Tailwind CSS', 'Supabase', 'Sanity', 'Stripe', 'Vercel',
+];
+---
+
+<section id="about" class="scroll-mt-24 border-t border-[var(--color-border)] py-20 md:py-28">
+  <div class="container-wide grid gap-12 lg:grid-cols-[0.8fr_1fr] lg:gap-16">
+    <div class="reveal">
+      <div class="overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)]">
+        <Image
+          src={terry}
+          alt="Terry Lombardi"
+          widths={[400, 700]}
+          sizes="(min-width: 1024px) 40vw, 100vw"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <dl class="mt-6 grid grid-cols-2 gap-x-4 gap-y-5">
+        {
+          facts.map(([label, value]) => (
+            <div>
+              <dt class="text-xs font-semibold tracking-[0.1em] text-[var(--color-muted)] uppercase" set:html={label} />
+              <dd class="mt-1 font-display text-lg tracking-tight" set:html={value} />
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <div class="reveal" style="transition-delay: 80ms">
+      <p class="eyebrow">About</p>
+      <h2 class="mt-3 font-display text-3xl tracking-tight md:text-4xl">
+        I'm Terry Lombardi.
+      </h2>
+      <div class="mt-5 space-y-4 text-lg leading-relaxed text-[var(--color-fg-soft)]">
+        <p>
+          I'm a U.S. expat who moved to Germany in 2016. Before that — and since —
+          my working life was operations, management and sales: two decades of
+          being responsible for a number at the bottom of a page, including a few
+          years running my own digital consultancy doing SEO and web work for
+          small businesses.
+        </p>
+        <p>
+          I trained formally in full-stack development with CareerFoundry and in
+          data analytics with Turing College, and I've spent the time since
+          building real projects — the nine above among them — to a professional
+          standard: modern frameworks, static-first performance, SEO built in,
+          and an admin experience the business owner can operate without me.
+        </p>
+        <p>
+          Living the expat experience myself is why so much of my work serves it.
+          I know what it's like to sign a lease in a language you're still
+          learning, and I build sites for the businesses that help people through
+          exactly that.
+        </p>
+      </div>
+
+      <p class="eyebrow mt-10">Tools I build with</p>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {
+          tech.map((t) => (
+            <li class="rounded-md border border-[var(--color-border)] px-2.5 py-1 text-xs font-medium text-[var(--color-fg-soft)]">
+              {t}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

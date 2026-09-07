@@ -1,0 +1,71 @@
+---
+import { site } from '../lib/site';
+
+const frameworks = ['Astro', 'Next.js', 'SvelteKit', 'Nuxt', 'React Native', 'Supabase'];
+---
+
+<section class="relative overflow-hidden pt-28 pb-16 md:pt-40 md:pb-24">
+  {/* soft background wash */}
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10"
+    style="background:
+      radial-gradient(60rem 40rem at 15% -10%, color-mix(in oklab, var(--color-accent) 12%, transparent), transparent 70%),
+      radial-gradient(50rem 40rem at 110% 10%, color-mix(in oklab, var(--color-accent) 8%, transparent), transparent 65%);"
+  >
+  </div>
+
+  <div class="container-wide">
+    <p class="eyebrow reveal">{site.name} — {site.location}</p>
+
+    <h1
+      class="reveal mt-5 max-w-4xl font-display text-[2.6rem] leading-[1.05] tracking-[-0.02em] sm:text-6xl md:text-7xl"
+      style="transition-delay: 60ms"
+    >
+      Websites and apps for businesses that serve
+      <span class="text-[var(--color-accent)]"> people far from home.</span>
+    </h1>
+
+    <p
+      class="reveal mt-7 max-w-2xl text-lg leading-relaxed text-[var(--color-fg-soft)] md:text-xl"
+      style="transition-delay: 120ms"
+    >
+      I'm {site.founder} — a developer and 20-year business operator based in Germany.
+      I build fast, modern sites and apps for expat-, relocation-, and U.S.
+      military-facing companies here, and for small businesses that want the same
+      standard of craft.
+    </p>
+
+    <div
+      class="reveal mt-9 flex flex-wrap items-center gap-4"
+      style="transition-delay: 180ms"
+    >
+      <a
+        href="#work"
+        class="rounded-full bg-[var(--color-ink)] px-6 py-3 text-sm font-medium text-[var(--color-paper)] transition-opacity hover:opacity-90"
+      >
+        See the work
+      </a>
+      <a
+        href="#about"
+        class="text-sm font-medium text-[var(--color-fg-soft)] underline-offset-4 hover:text-[var(--color-accent)] hover:underline"
+      >
+        About Terry →
+      </a>
+    </div>
+
+    <div
+      class="reveal mt-14 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[var(--color-border)] pt-6"
+      style="transition-delay: 240ms"
+    >
+      <span class="text-xs font-semibold tracking-[0.14em] text-[var(--color-muted)] uppercase">
+        Recent builds use
+      </span>
+      {
+        frameworks.map((f) => (
+          <span class="text-sm font-medium text-[var(--color-fg-soft)]">{f}</span>
+        ))
+      }
+    </div>
+  </div>
+</section>

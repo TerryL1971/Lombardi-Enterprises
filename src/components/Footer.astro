@@ -1,0 +1,85 @@
+---
+import { site, nav } from '../lib/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div class="container-wide py-14">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <div class="flex items-center gap-2.5">
+          <span
+            class="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-ink)] font-display text-sm font-semibold text-[var(--color-paper)]"
+          >
+            LE
+          </span>
+          <span class="text-[15px] font-semibold tracking-tight">{site.name}</span>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-[var(--color-muted)]">
+          {site.tagline}
+        </p>
+      </div>
+
+      <div class="flex gap-14">
+        <nav aria-label="Footer">
+          <p class="eyebrow mb-3">Site</p>
+          <ul class="space-y-2">
+            {
+              nav.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="text-sm text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <div>
+          <p class="eyebrow mb-3">Elsewhere</p>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href={`mailto:${site.email}`}
+                class="text-sm text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
+              >
+                Email
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
+              >
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-2 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>© {year} {site.name}. {site.location}.</p>
+      <p>Built with Astro. Every page ships as static HTML.</p>
+    </div>
+  </div>
+</footer>
