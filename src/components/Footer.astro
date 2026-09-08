@@ -9,11 +9,11 @@ const year = new Date().getFullYear();
       <div class="max-w-sm">
         <div class="flex items-center gap-2.5">
           <span
-            class="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-cta)] font-display text-sm font-semibold text-[var(--color-cta-fg)]"
+            class="grid h-8 w-8 place-items-center rounded-md bg-[var(--color-cta)] font-mono text-[13px] font-medium text-[var(--color-cta-fg)]"
           >
             LE
           </span>
-          <span class="text-[15px] font-semibold tracking-tight">{site.name}</span>
+          <span class="text-[15px] font-semibold tracking-[-0.01em]">{site.name}</span>
         </div>
         <p class="mt-4 text-sm leading-relaxed text-[var(--color-muted)]">
           {site.tagline}
@@ -76,7 +76,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div
-      class="mt-12 flex flex-col gap-2 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between"
+      class="mono-tag mt-12 flex flex-col gap-2 border-t border-[var(--color-border)] pt-6 text-[11px] text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between"
     >
       <p>© {year} {site.name}. {site.location}.</p>
       <p>Built with Astro. Every page ships as static HTML.</p>

@@ -6,8 +6,8 @@ import ContactForm from './ContactForm.tsx';
 <section id="contact" class="scroll-mt-24 border-t border-[var(--color-border)] py-20 md:py-28">
   <div class="container-wide grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
     <div class="reveal">
-      <p class="eyebrow">Contact</p>
-      <h2 class="mt-3 font-display text-3xl tracking-tight md:text-5xl">
+      <p class="eyebrow" data-index="04">Contact</p>
+      <h2 class="mt-4 font-display text-[var(--text-h2)] leading-[1.03] tracking-[-0.03em]">
         Building the client list.
       </h2>
       <p class="mt-5 max-w-md text-lg leading-relaxed text-[var(--color-fg-soft)]">
@@ -22,7 +22,7 @@ import ContactForm from './ContactForm.tsx';
           href={`mailto:${site.email}`}
           class="flex items-center gap-3 text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
         >
-          <span class="font-semibold text-[var(--color-fg)]">Email</span>
+          <span class="mono-tag w-16 text-[10px] uppercase tracking-[0.08em] text-[var(--color-muted)]">Email</span>
           {site.email}
         </a>
         <a
@@ -31,7 +31,7 @@ import ContactForm from './ContactForm.tsx';
           rel="noopener noreferrer"
           class="flex items-center gap-3 text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
         >
-          <span class="font-semibold text-[var(--color-fg)]">LinkedIn</span>
+          <span class="mono-tag w-16 text-[10px] uppercase tracking-[0.08em] text-[var(--color-muted)]">LinkedIn</span>
           terry-c-lombardi
         </a>
         <a
@@ -40,7 +40,7 @@ import ContactForm from './ContactForm.tsx';
           rel="noopener noreferrer"
           class="flex items-center gap-3 text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
         >
-          <span class="font-semibold text-[var(--color-fg)]">GitHub</span>
+          <span class="mono-tag w-16 text-[10px] uppercase tracking-[0.08em] text-[var(--color-muted)]">GitHub</span>
           TerryL1971
         </a>
       </div>

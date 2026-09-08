@@ -10,8 +10,8 @@ const frameworks = ['Astro', 'Next.js', 'SvelteKit', 'Nuxt', 'React Native', 'Su
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 -z-10"
     style="background:
-      radial-gradient(60rem 40rem at 15% -10%, color-mix(in oklab, var(--color-accent) 12%, transparent), transparent 70%),
-      radial-gradient(50rem 40rem at 110% 10%, color-mix(in oklab, var(--color-accent) 8%, transparent), transparent 65%);"
+      radial-gradient(58rem 38rem at 12% -12%, color-mix(in oklab, var(--color-accent) 13%, transparent), transparent 70%),
+      radial-gradient(46rem 38rem at 108% 4%, color-mix(in oklab, var(--color-accent) 7%, transparent), transparent 62%);"
   >
   </div>
 
@@ -19,15 +19,14 @@ const frameworks = ['Astro', 'Next.js', 'SvelteKit', 'Nuxt', 'React Native', 'Su
     <p class="eyebrow reveal">{site.name} — {site.location}</p>
 
     <h1
-      class="reveal mt-5 max-w-4xl font-display text-[2.6rem] leading-[1.05] tracking-[-0.02em] sm:text-6xl md:text-7xl"
-      style="transition-delay: 60ms"
+      class="reveal mt-6 max-w-[20ch] font-display font-bold leading-[0.98] tracking-[-0.035em]"
+      style="font-size: var(--text-hero); transition-delay: 60ms"
     >
-      Websites and apps for businesses that serve
-      <span class="text-[var(--color-accent)]"> people far from home.</span>
+      Websites and apps for businesses that serve<span class="text-[var(--color-accent)]"> people far from home.</span>
     </h1>
 
     <p
-      class="reveal mt-7 max-w-2xl text-lg leading-relaxed text-[var(--color-fg-soft)] md:text-xl"
+      class="reveal mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-fg-soft)] md:text-xl"
       style="transition-delay: 120ms"
     >
       I'm {site.founder} — a developer and 20-year business operator based in Germany.
@@ -37,7 +36,7 @@ const frameworks = ['Astro', 'Next.js', 'SvelteKit', 'Nuxt', 'React Native', 'Su
     </p>
 
     <div
-      class="reveal mt-9 flex flex-wrap items-center gap-4"
+      class="reveal mt-10 flex flex-wrap items-center gap-4"
       style="transition-delay: 180ms"
     >
       <a
@@ -55,17 +54,22 @@ const frameworks = ['Astro', 'Next.js', 'SvelteKit', 'Nuxt', 'React Native', 'Su
     </div>
 
     <div
-      class="reveal mt-14 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[var(--color-border)] pt-6"
+      class="reveal mt-14 border-t border-[var(--color-border)] pt-5"
       style="transition-delay: 240ms"
     >
-      <span class="text-xs font-semibold tracking-[0.14em] text-[var(--color-muted)] uppercase">
-        Recent builds use
-      </span>
-      {
-        frameworks.map((f) => (
-          <span class="text-sm font-medium text-[var(--color-fg-soft)]">{f}</span>
-        ))
-      }
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-2">
+        <span class="mono-tag text-[var(--color-muted)] uppercase tracking-[0.1em]">
+          Recent builds use
+        </span>
+        {
+          frameworks.map((f, i) => (
+            <>
+              {i > 0 && <span aria-hidden="true" class="mono-tag text-[var(--color-border)]">/</span>}
+              <span class="mono-tag text-[var(--color-fg-soft)]">{f}</span>
+            </>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

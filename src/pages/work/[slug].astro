@@ -47,13 +47,13 @@ const jsonLd = {
     <div class="container-wide">
       <a
         href="/#work"
-        class="text-sm font-medium text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
+        class="mono-tag text-[11px] uppercase tracking-[0.08em] text-[var(--color-fg-soft)] hover:text-[var(--color-accent)]"
       >
         ← All work
       </a>
 
       <header class="mt-8 max-w-3xl">
-        <div class="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-wide text-[var(--color-muted)]">
+        <div class="mono-tag flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.06em] text-[var(--color-muted)]">
           <span
             class="rounded-full px-2.5 py-1"
             style={`background: color-mix(in oklab, ${data.accent} 16%, transparent); color: ${data.accent}`}
@@ -61,10 +61,10 @@ const jsonLd = {
             {data.status}
           </span>
           <span>{data.category}</span>
-          <span>·</span>
+          <span aria-hidden="true">·</span>
           <span>{data.year}</span>
         </div>
-        <h1 class="mt-4 font-display text-4xl tracking-tight md:text-6xl">{data.title}</h1>
+        <h1 class="mt-5 font-display text-[var(--text-h2)] font-bold leading-[1.02] tracking-[-0.035em]">{data.title}</h1>
         <p class="mt-4 text-xl leading-relaxed text-[var(--color-fg-soft)]">{data.tagline}</p>
 
         <div class="mt-6 flex flex-wrap gap-3">
@@ -121,7 +121,7 @@ const jsonLd = {
           <ul class="mt-2 flex flex-wrap gap-1.5">
             {
               data.stack.map((t) => (
-                <li class="rounded-md bg-[var(--color-paper-deep)] px-2 py-1 text-[11px] font-medium text-[var(--color-muted)]">
+                <li class="mono-tag rounded-md bg-[var(--color-paper-deep)] px-2 py-1 text-[10px] text-[var(--color-muted)]">
                   {t}
                 </li>
               ))
@@ -146,7 +146,7 @@ const jsonLd = {
         <a href={`/work/${next.id}`} class="group block">
           <span class="eyebrow">Next project</span>
           <span class="mt-2 flex items-baseline gap-3">
-            <span class="font-display text-2xl tracking-tight group-hover:text-[var(--color-accent)] md:text-3xl">
+            <span class="font-display text-2xl font-semibold tracking-[-0.02em] group-hover:text-[var(--color-accent)] md:text-3xl">
               {next.data.title}
             </span>
             <span class="text-[var(--color-muted)] transition-transform group-hover:translate-x-1">→</span>
@@ -160,10 +160,11 @@ const jsonLd = {
 <style>
   .prose-work :global(h2) {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    letter-spacing: -0.015em;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     color: var(--color-fg);
-    margin-top: 2.5rem;
+    margin-top: 2.75rem;
     margin-bottom: 0.75rem;
   }
   .prose-work :global(h2:first-child) {

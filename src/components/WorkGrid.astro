@@ -13,8 +13,8 @@ const liveCount = entries.filter((e) => e.data.status === 'Live').length;
   <div class="container-wide">
     <div class="reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div>
-        <p class="eyebrow">Selected work</p>
-        <h2 class="mt-3 max-w-2xl font-display text-3xl tracking-tight md:text-5xl">
+        <p class="eyebrow" data-index="01">Selected work</p>
+        <h2 class="mt-4 max-w-2xl font-display text-[var(--text-h2)] leading-[1.02] tracking-[-0.03em]">
           Nine builds across five frameworks.
         </h2>
       </div>
@@ -25,7 +25,7 @@ const liveCount = entries.filter((e) => e.data.status === 'Live').length;
       </p>
     </div>
 
-    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+    <div class="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2">
       {entries.map((entry, i) => <WorkCard entry={entry} index={i} />)}
     </div>
   </div>

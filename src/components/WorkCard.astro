@@ -11,14 +11,17 @@ const { entry, index } = Astro.props;
 const { data } = entry;
 const href = `/work/${entry.id}`;
 const delay = Math.min(index, 4) * 60;
+const num = String(index + 1).padStart(2, '0');
 ---
 
 <a
   href={href}
-  class="reveal group flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--card-accent)] hover:shadow-[0_20px_50px_-24px_rgba(0,0,0,0.35)]"
+  class="reveal group flex flex-col"
   style={`--card-accent: ${data.accent}; transition-delay: ${delay}ms`}
 >
-  <div class="relative aspect-[16/10] overflow-hidden border-b border-[var(--color-border)]">
+  <div
+    class="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 group-hover:border-[color:var(--card-accent)]"
+  >
     {
       data.cover ? (
         <Image
@@ -26,7 +29,8 @@ const delay = Math.min(index, 4) * 60;
           alt={`${data.title} — screenshot`}
           widths={[400, 800, 1200]}
           sizes="(min-width: 768px) 40vw, 100vw"
-          class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          loading={index < 2 ? 'eager' : 'lazy'}
+          class="h-full w-full object-cover object-top transition-transform duration-[600ms] ease-[var(--ease-out-soft)] group-hover:scale-[1.04]"
         />
       ) : (
         <div
@@ -36,42 +40,51 @@ const delay = Math.min(index, 4) * 60;
             radial-gradient(100% 100% at 100% 100%, color-mix(in oklab, ${data.accent} 22%, transparent), transparent 55%),
             var(--color-surface);`}
         >
-          <span class="font-display text-2xl font-medium tracking-tight text-[var(--color-fg)]/70">
+          <span class="font-display text-2xl font-semibold tracking-tight text-[var(--color-fg)]/70">
             {data.title}
           </span>
         </div>
       )
     }
     <span
-      class="absolute left-3 top-3 rounded-full bg-[var(--color-bg)]/90 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-[var(--color-fg-soft)] backdrop-blur"
+      class="mono-tag absolute left-3 top-3 rounded-full bg-[var(--color-bg)]/90 px-2.5 py-1 text-[10px] font-medium tracking-[0.06em] text-[var(--color-fg-soft)] uppercase backdrop-blur"
     >
       {data.status}
     </span>
   </div>
 
-  <div class="flex flex-1 flex-col p-5">
-    <div class="flex items-center justify-between gap-3">
-      <h3 class="font-display text-xl font-medium tracking-tight">{data.title}</h3>
-      <span class="shrink-0 text-xs font-medium text-[var(--color-muted)]">{data.category}</span>
+  <div class="mt-4 flex flex-1 flex-col">
+    <div class="flex items-baseline justify-between gap-3">
+      <div class="flex items-baseline gap-2.5">
+        <span class="mono-tag text-[var(--color-muted)] tabular-nums">{num}</span>
+        <h3 class="font-display text-[var(--text-h3)] font-semibold tracking-[-0.02em]">{data.title}</h3>
+      </div>
+      <span class="mono-tag shrink-0 text-[10px] text-[var(--color-muted)] uppercase tracking-[0.06em]">{data.category}</span>
     </div>
-    <p class="mt-1.5 text-sm font-medium text-[color:var(--card-accent)]">{data.tagline}</p>
-    <p class="mt-3 text-sm leading-relaxed text-[var(--color-fg-soft)]">{data.summary}</p>
+    <p class="mt-1.5 pl-[calc(1ch+0.625rem)] text-sm font-medium text-[color:var(--card-accent)]">{data.tagline}</p>
+    <p class="mt-2.5 pl-[calc(1ch+0.625rem)] text-sm leading-relaxed text-[var(--color-fg-soft)]">{data.summary}</p>
 
-    <div class="mt-auto flex flex-wrap gap-1.5 pt-5">
+    <div class="mt-4 flex flex-wrap items-center gap-1.5 pl-[calc(1ch+0.625rem)]">
       {
         data.stack.slice(0, 4).map((tech) => (
-          <span class="rounded-md bg-[var(--color-paper-deep)] px-2 py-1 text-[11px] font-medium text-[var(--color-muted)]">
+          <span class="mono-tag rounded-md bg-[var(--color-paper-deep)] px-2 py-1 text-[10px] text-[var(--color-muted)]">
             {tech}
           </span>
         ))
       }
       {
         data.stack.length > 4 && (
-          <span class="rounded-md px-2 py-1 text-[11px] font-medium text-[var(--color-muted)]">
+          <span class="mono-tag px-1 text-[10px] text-[var(--color-muted)]">
             +{data.stack.length - 4}
           </span>
         )
       }
+      <span
+        class="mono-tag ml-auto inline-flex items-center gap-1 text-[10px] text-[var(--color-fg-soft)] uppercase tracking-[0.08em] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      >
+        View
+        <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+      </span>
     </div>
   </div>
 </a>
