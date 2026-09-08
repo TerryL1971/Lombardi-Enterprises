@@ -4,19 +4,34 @@ import { site } from '../lib/site';
 const frameworks = ['Astro', 'Next.js', 'SvelteKit', 'Nuxt', 'React Native', 'Supabase'];
 ---
 
-<section class="relative overflow-hidden pt-28 pb-16 md:pt-40 md:pb-24">
-  {/* soft background wash */}
+<section class="relative overflow-hidden pb-10 md:pb-14">
+  {/* soft, slowly drifting background wash */}
+  <div aria-hidden="true" class="hero-wash pointer-events-none absolute inset-0 -z-10"></div>
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute inset-0 -z-10"
-    style="background:
-      radial-gradient(58rem 38rem at 12% -12%, color-mix(in oklab, var(--color-accent) 13%, transparent), transparent 70%),
-      radial-gradient(46rem 38rem at 108% 4%, color-mix(in oklab, var(--color-accent) 7%, transparent), transparent 62%);"
+    class="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full opacity-70 blur-3xl"
+    style="background: radial-gradient(closest-side, color-mix(in oklab, var(--color-accent) 22%, transparent), transparent);"
   >
   </div>
 
-  <div class="container-wide">
-    <p class="eyebrow reveal">{site.name} — {site.location}</p>
+  {/* masthead strip */}
+  <div class="mt-20 border-y border-[var(--color-border)] md:mt-24">
+    <div class="container-wide flex items-center justify-between gap-4 py-2.5">
+      <span class="mono-tag inline-flex items-center gap-2 text-[10px] tracking-[0.1em] text-[var(--color-fg-soft)] uppercase">
+        <span class="relative flex h-1.5 w-1.5">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-accent)] opacity-70"></span>
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"></span>
+        </span>
+        Available for projects — 2026
+      </span>
+      <span class="mono-tag hidden text-[10px] tracking-[0.1em] text-[var(--color-muted)] uppercase sm:inline">
+        {site.location}
+      </span>
+    </div>
+  </div>
+
+  <div class="container-wide pt-14 md:pt-20">
+    <p class="eyebrow reveal">Independent web &amp; app studio</p>
 
     <h1
       class="reveal mt-6 max-w-[20ch] font-display font-bold leading-[0.98] tracking-[-0.035em]"
@@ -71,5 +86,50 @@ const frameworks = ['Astro', 'Next.js', 'SvelteKit', 'Nuxt', 'React Native', 'Su
         }
       </div>
     </div>
+
+    {/* scroll invitation */}
+    <a
+      href="#work"
+      class="group reveal mt-10 inline-flex items-center gap-3 text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]"
+      style="transition-delay: 300ms"
+      aria-label="Scroll to the work"
+    >
+      <span class="scroll-cue relative block h-10 w-px overflow-hidden bg-[var(--color-border)]">
+        <span class="scroll-cue-dot absolute left-1/2 top-0 h-3.5 w-px -translate-x-1/2 bg-current"></span>
+      </span>
+      <span class="mono-tag text-[10px] tracking-[0.14em] uppercase">Scroll</span>
+    </a>
   </div>
 </section>
+
+<style>
+  .hero-wash {
+    background:
+      radial-gradient(50rem 32rem at 8% -8%, color-mix(in oklab, var(--color-accent) 26%, transparent), transparent 66%),
+      radial-gradient(44rem 36rem at 102% 0%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 58%),
+      radial-gradient(40rem 32rem at 55% 128%, color-mix(in oklab, var(--color-accent) 12%, transparent), transparent 60%);
+    background-size: 150% 150%;
+    animation: hero-drift 24s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-drift {
+    from { background-position: 0% 0%; }
+    to { background-position: 100% 55%; }
+  }
+
+  @keyframes scroll-cue-fall {
+    0% { transform: translate(-50%, -100%); opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { transform: translate(-50%, 300%); opacity: 0; }
+  }
+
+  .scroll-cue-dot {
+    animation: scroll-cue-fall 1.8s var(--ease-out-soft) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-wash { animation: none; }
+    .scroll-cue-dot { animation: none; opacity: 1; transform: translate(-50%, 0); height: 100%; }
+  }
+</style>

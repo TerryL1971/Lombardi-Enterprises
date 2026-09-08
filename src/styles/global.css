@@ -7,8 +7,8 @@
   Precision-grotesque type on a warm paper base: an editorial studio voice,
   not a generic dev tool. One sans (Hanken Grotesk) carries headings and body;
   a mono (Geist Mono) carries every label, index and metadatum.
-  Light is the default; dark swaps the roles under [data-theme="dark"]
-  and prefers-color-scheme.
+  Light is the default; dark swaps the roles under prefers-color-scheme.
+  There is no in-page theme switch — the site follows the operating system.
 */
 @theme {
   --font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
@@ -45,23 +45,9 @@
   --text-h3: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
 }
 
-/* Dark theme — explicit choice wins in both directions */
-:root[data-theme='dark'] {
-  --color-bg: #111114;
-  --color-surface: #1a1b20;
-  --color-fg: #f3f1ea;
-  --color-fg-soft: #c9c6bd;
-  --color-muted: #918d82;
-  --color-border: #2b2c33;
-  --color-accent: #e07a54;
-  --color-accent-deep: #c05a36;
-  --color-accent-soft: #38271f;
-  --color-cta: #f3f1ea;
-  --color-cta-fg: #15161a;
-}
-
+/* Dark theme — follows the operating system; there is no in-page toggle. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+  :root {
     --color-bg: #111114;
     --color-surface: #1a1b20;
     --color-fg: #f3f1ea;
@@ -110,10 +96,11 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  :root[data-theme='dark'] body::before,
-  .no-js body::before {
-    mix-blend-mode: screen;
-    opacity: 0.02;
+  @media (prefers-color-scheme: dark) {
+    body::before {
+      mix-blend-mode: screen;
+      opacity: 0.02;
+    }
   }
 
   main,
