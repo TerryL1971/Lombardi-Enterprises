@@ -12,6 +12,7 @@ status: Concept build
 order: 5
 accent: '#c8102e'
 repoUrl: https://github.com/TerryL1971/UCG-App
+cover: ./_assets/used-car-guys/cover.png
 stack:
   - Expo / React Native
   - Expo Router

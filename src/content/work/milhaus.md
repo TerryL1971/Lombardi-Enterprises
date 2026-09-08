@@ -10,7 +10,7 @@ audience: Military and expat families moving to or from German bases
 year: 2025
 status: Concept build
 featured: true
-order: 3
+order: 2
 accent: '#c89b3c'
 repoUrl: https://github.com/TerryL1971/Milhaus
 cover: ./_assets/milhaus/cover.png

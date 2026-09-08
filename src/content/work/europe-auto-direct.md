@@ -10,7 +10,7 @@ audience: Expats and relocating professionals in Germany &amp; Luxembourg
 year: 2025
 status: Concept build
 featured: true
-order: 2
+order: 3
 accent: '#00a3e0'
 repoUrl: https://github.com/TerryL1971/Europe-Auto-Direct
 cover: ./_assets/europe-auto-direct/cover.png

@@ -11,7 +11,9 @@ year: 2025
 status: Live
 order: 6
 accent: '#2563eb'
+liveUrl: https://ucg-social-scheduler.vercel.app
 repoUrl: https://github.com/TerryL1971/UCG-Social-Scheduler
+cover: ./_assets/ucg-social-scheduler/cover.png
 stack:
   - Next.js (App Router)
   - TypeScript
