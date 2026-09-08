@@ -24,12 +24,15 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "playwright": "^1.56.0",
-    "sharp": "^0.35.4"
+    "sharp": "^0.35.4",
+    "typescript": "^6.0.3"
   },
   "allowScripts": {
-    "esbuild@0.28.2": true
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true
   }
 }

@@ -1,23 +1,28 @@
 ---
-import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../lib/site';
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
   const entries = await getCollection('work');
   return entries.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
-}
+}) satisfies GetStaticPaths;
 
-const { entry } = Astro.props;
+type Props = { entry: CollectionEntry<'work'> };
+
+const { entry } = Astro.props as Props;
 const { data } = entry;
 const { Content } = await render(entry);
 
-const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
-const idx = all.findIndex((e) => e.id === entry.id);
+const all = (await getCollection('work')).sort(
+  (a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) => a.data.order - b.data.order,
+);
+const idx = all.findIndex((e: CollectionEntry<'work'>) => e.id === entry.id);
 const next = all[(idx + 1) % all.length];
 
 const jsonLd = {
@@ -69,7 +74,7 @@ const jsonLd = {
                 href={data.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="rounded-full bg-[var(--color-ink)] px-5 py-2.5 text-sm font-medium text-[var(--color-paper)] transition-opacity hover:opacity-90"
+                class="rounded-full bg-[var(--color-cta)] px-5 py-2.5 text-sm font-medium text-[var(--color-cta-fg)] transition-opacity hover:opacity-90"
               >
                 Visit live site ↗
               </a>

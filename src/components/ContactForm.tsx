@@ -1,4 +1,5 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 
 const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_ID as string | undefined;
 const EMAIL = 'hello@terrell-lombardi.de';
@@ -23,7 +24,7 @@ export default function ContactForm() {
         </p>
         <a
           href={`mailto:${EMAIL}?subject=Project%20enquiry`}
-          className="mt-4 inline-block rounded-full bg-[var(--color-ink)] px-6 py-3 text-sm font-medium text-[var(--color-paper)] transition-opacity hover:opacity-90"
+          className="mt-4 inline-block rounded-full bg-[var(--color-cta)] px-6 py-3 text-sm font-medium text-[var(--color-cta-fg)] transition-opacity hover:opacity-90"
         >
           {EMAIL}
         </a>
@@ -90,7 +91,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="rounded-full bg-[var(--color-ink)] px-6 py-3 text-sm font-medium text-[var(--color-paper)] transition-opacity hover:opacity-90 disabled:opacity-60"
+          className="rounded-full bg-[var(--color-cta)] px-6 py-3 text-sm font-medium text-[var(--color-cta-fg)] transition-opacity hover:opacity-90 disabled:opacity-60"
         >
           {status === 'submitting' ? 'Sending…' : 'Send message'}
         </button>

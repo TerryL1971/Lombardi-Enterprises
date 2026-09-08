@@ -29,6 +29,10 @@
   --color-fg-soft: var(--color-ink-soft);
   --color-border: var(--color-line);
 
+  /* Primary button — flips so it always contrasts the page. */
+  --color-cta: #17181c;
+  --color-cta-fg: #fbfaf7;
+
   --radius-card: 1.25rem;
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -44,6 +48,8 @@
   --color-accent: #e07a54;
   --color-accent-deep: #c05a36;
   --color-accent-soft: #3a2a24;
+  --color-cta: #f3f1ea;
+  --color-cta-fg: #17181c;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -57,6 +63,8 @@
     --color-accent: #e07a54;
     --color-accent-deep: #c05a36;
     --color-accent-soft: #3a2a24;
+    --color-cta: #f3f1ea;
+    --color-cta-fg: #17181c;
   }
 }
 
